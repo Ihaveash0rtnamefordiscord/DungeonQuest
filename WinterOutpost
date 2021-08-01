@@ -23,7 +23,7 @@ for _,v3 in pairs(game:GetService("Workspace").dungeon:GetChildren()) do
                         wait(.45)
 local EnemeyTarget = {}
 EnemeyTarget.Position = v5.HumanoidRootPart.Position + Vector3.new(0,3,0)
-game:GetService("TweenService"):Create(game.Players.LocalPlayer.Character.HumanoidRootPart, TweenInfo.new(2), EnemeyTarget):Play()
+game:GetService("TweenService"):Create(game.Players.LocalPlayer.Character.HumanoidRootPart, TweenInfo.new(10), EnemeyTarget):Play()
     if isnetworkowner(v5.HumanoidRootPart) then
         v5.Humanoid.Health = 0
                                     end
