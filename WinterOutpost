@@ -1,6 +1,5 @@
 game:GetService("RunService").Heartbeat:Connect(function()
     if getgenv().autofarm then
-
         game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 30
         sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius", math.huge)
 game.ReplicatedStorage.remotes.changeStartValue:FireServer()
@@ -49,6 +48,23 @@ for _,v3 in pairs(game:GetService("Workspace").dungeon:GetChildren()) do
 end)
     
     game:GetService("RunService").Stepped:Connect(function()
+        pcall(function()
+        for _,v3 in pairs(game:GetService("Workspace").dungeon:GetChildren()) do
+    if v3.ClassName == "Folder" then
+        for _,v4 in pairs(v3:GetChildren()) do
+            if v4.ClassName == "Folder" and v4.Name == "enemyFolder" then
+                for i3,v5 in pairs(v4:GetChildren()) do
+                    if v5.ClassName == "Model" then
+    if isnetworkowner(v5.HumanoidRootPart) then
+        v5.Humanoid.Health = 0
+                                    end
+                                    end
+                                 end
+                             end
+                        end
+                    end
+        end
+ 
     if getgenv().autofarm then
  			for i, v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
 				if v:IsA("BasePart") then
@@ -56,4 +72,16 @@ end)
 				end
  			end
  			end
+ 			       if getgenv().autofarm and game.Workspace["Ice Minion"] then
+              if isnetworkowner(game.Workspace["Ice Minion"].HumanoidRootPart) then
+        game.Workspace["Ice Minion"].Humanoid.Health = 0
+                 end
+ 			       end
+ 			       if getgenv().autofarm and game.Workspace.iceAOE then
+    game.Workspace.iceAOE:Destroy()
+end
+if getgenv().autfarm and game.Workspace.iceBeam then
+    game.Workspace.iceBeam:Destroy()
+end
+        end)
 	end)
