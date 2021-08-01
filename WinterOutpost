@@ -1,6 +1,7 @@
 game:GetService("RunService").Heartbeat:Connect(function()
     if getgenv().autofarm then
-        game.Players.LocalPlayer.Character.Humanoid:ChangeState(11)
+
+        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 30
         sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius", math.huge)
 game.ReplicatedStorage.remotes.changeStartValue:FireServer()
 for i,v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
@@ -14,6 +15,19 @@ game.Players.LocalPlayer.Character[v.Name].swing:FireServer()
     end
 end
 
+for i,v in pairs(game:GetService("Workspace").borders:GetChildren()) do
+    if v.ClassName == "Part" then
+        v.CanCollide = false
+    end
+    end
+for i,v in pairs(game:GetService("Workspace").wallBothColumn:GetChildren()) do
+    if v.ClassName == "Part" then
+        v.CanCollide = false
+    end
+    end
+    
+    
+
 for _,v3 in pairs(game:GetService("Workspace").dungeon:GetChildren()) do
     if v3.ClassName == "Folder" then
         for _,v4 in pairs(v3:GetChildren()) do
@@ -21,9 +35,7 @@ for _,v3 in pairs(game:GetService("Workspace").dungeon:GetChildren()) do
                 for i3,v5 in pairs(v4:GetChildren()) do
                     if v5.ClassName == "Model" then
                         wait(.45)
-local EnemeyTarget = {}
-EnemeyTarget.Position = v5.HumanoidRootPart.Position + Vector3.new(0,3,0)
-game:GetService("TweenService"):Create(game.Players.LocalPlayer.Character.HumanoidRootPart, TweenInfo.new(10), EnemeyTarget):Play()
+ game.Players.LocalPlayer.Character.Humanoid.WalkToPoint = v5.HumanoidRootPart.Position 
     if isnetworkowner(v5.HumanoidRootPart) then
         v5.Humanoid.Health = 0
                                     end
@@ -34,4 +46,14 @@ game:GetService("TweenService"):Create(game.Players.LocalPlayer.Character.Humano
                     end
                 end
             end
-        end)
+end)
+    
+    game:GetService("RunService").Stepped:Connect(function()
+    if getgenv().autofarm then
+ 			for i, v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
+				if v:IsA("BasePart") then
+					v.CanCollide = false
+				end
+ 			end
+ 			end
+	end)
