@@ -3,6 +3,7 @@ local pog = Instance.new("Part", game.Workspace)
 pog.Anchored = true
 pog.Size = Vector3.new(697, 1, 1786)
 pog.CFrame = CFrame.new(73.5, 45.668, -835)
+pog.Transparency = 1
 game:GetService("RunService").Heartbeat:Connect(function()
     if getgenv().autofarm then
         game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 30
