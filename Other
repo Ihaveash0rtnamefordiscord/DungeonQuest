@@ -22,7 +22,14 @@ game.Players.LocalPlayer.Character[v.Name].swing:FireServer()
     end
 end
 
+pcall(function()
+if getgenv().semigod then
+    if game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character:FindFirstChild("LowerTorso") then 
+                         game.Players.LocalPlayer.Character.LowerTorso.Root:Destroy()
+    end
 
+end
+            end)
     
 
 for _,v3 in pairs(game:GetService("Workspace").dungeon:GetChildren()) do
