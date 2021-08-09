@@ -49,15 +49,12 @@ for _,v3 in pairs(game:GetService("Workspace").dungeon:GetChildren()) do
                     end
                 end
     end
-    
-    game:GetService("RunService").RenderStepped:Connect(function()
-            if getgenv().autofarm then
+ 	end)
+    game:GetService("RunService").Stepped:Connect(function()
  			for i, v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
 				if v:IsA("BasePart") then
 					v.CanCollide = false
-
 				end
  			end
-            end
-    end)
- 	end)
+ 
+ 		end)
