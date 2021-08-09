@@ -1,0 +1,56 @@
+getgenv().autofarm = true
+
+local pog = Instance.new("Part", game.Workspace)
+
+pog.Anchored = true
+pog.Size = Vector3.new(99e9, 1, 99e9)
+pog.CFrame = CFrame.new(-346.5, 1.349, -107)
+pog.Transparency = 1
+game:GetService("RunService").Heartbeat:Connect(function()
+    if getgenv().autofarm then
+        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 30
+        sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius", math.huge)
+game.ReplicatedStorage.remotes.changeStartValue:FireServer()
+for i,v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
+    if v.ClassName == "Accessory" then
+        for _,v2 in pairs(v:GetChildren()) do
+            if v2.ClassName == "BoolValue" and v2.Name == "Weapon" then
+game.Players.LocalPlayer.Character[v.Name].swing:FireServer()
+                
+                end
+            end
+    end
+end
+
+
+    
+
+for _,v3 in pairs(game:GetService("Workspace").dungeon:GetChildren()) do
+    if v3.ClassName == "Folder" then
+        for _,v4 in pairs(v3:GetChildren()) do
+            if v4.ClassName == "Folder" and v4.Name == "enemyFolder" then
+                for i3,v5 in pairs(v4:GetChildren()) do
+                    if v5.ClassName == "Model" then
+ game.Players.LocalPlayer.Character.Humanoid.WalkToPoint = v5.HumanoidRootPart.Position 
+    if isnetworkowner(v5.HumanoidRootPart) then
+        v5.Humanoid.Health = 0
+                                    end
+                                    end
+                                 end
+                             end
+                        end
+                    end
+                end
+    end
+    
+    game:GetService("RunService").RenderStepped:Connect(function()
+            if getgenv().autofarm then
+ 			for i, v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
+				if v:IsA("BasePart") then
+					v.CanCollide = false
+
+				end
+ 			end
+            end
+    end)
+ 	end)
